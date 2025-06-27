@@ -51,11 +51,12 @@ final class FirebaseController extends AbstractController
             ->createAuth();
 
         $uid = 'davor';
-        $customToken = $auth->createCustomToken($uid);
-        $idToken = $auth->signInWithCustomToken($customToken)->idToken();
+        $customToken = $auth->createCustomToken($uid)->toString();
+        // $idToken = $auth->signInWithCustomToken($customToken)->idToken();
+
 
         return new JsonResponse([
-            'custom_token' => $idToken,
+            'custom_token' => $customToken,
         ]);
     }
     // public function generateToken(Auth $auth, Request $request): JsonResponse
